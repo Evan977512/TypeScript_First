@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Store from "./Store";
+import { Address, Restaurant } from "./model/restaurant";
 
-let data = {
+let data: Restaurant = {
   name: "John",
   category: "Korean",
   address: {
@@ -18,9 +19,14 @@ let data = {
 };
 
 const App: React.FC = () => {
+  const [myRestaurant, setMyRestaurant] = useState<Restaurant>(data);
+  const changeAddress = (address: Address) => {
+    setMyRestaurant({ ...myRestaurant, address: address });
+  };
+
   return (
     <div className="App">
-      <Store info={data} />
+      <Store info={myRestaurant} changeAddress={changeAddress} />
     </div>
   );
 };
