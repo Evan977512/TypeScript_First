@@ -39,3 +39,6 @@ export type Menu = {
   price: number;
   category: string;
 };
+
+export type AddressWithoutZip = Omit<Address, "postalCode">;
+export type RestaurantOnlyCategory = Pick<Restaurant, "category">;
